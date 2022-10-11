@@ -27,6 +27,8 @@ public class BookReaderController {
         JButton button1 = new JButton("Alphabetic");
         //button1.addActionListener();
         JButton button2 = new JButton("Frequency");
+        
+        
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(button1);
         buttonPanel.add(button2);
@@ -47,17 +49,23 @@ public class BookReaderController {
         
         });
         
-        JTextField search = new JTextField(7);
-        
+        JTextField search = new JTextField(9);
+        JButton searchButton = new JButton("Search"); 
         JPanel searchPanel = new JPanel(); 
         
+        searchPanel.add(searchButton);
         searchPanel.add(search);
         
         pane.add(searchPanel,BorderLayout.NORTH);
         
-        search.addActionListener(e -> {
-        	String input = search.getText();
-        	//Någon metod för sökning
+        searchButton.addActionListener(e -> {
+        	String string = search.getText().toLowerCase().trim();
+        	for(int i = 0 ; i<sortedList.getSize(); i++) {
+        		if(sortedList.getElementAt(i).getKey().equals(string)) {
+        			list.ensureIndexIsVisible(i);
+        		}
+        	}
+        	
         });
         
         frame.pack();
