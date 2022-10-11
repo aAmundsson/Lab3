@@ -23,17 +23,45 @@ public class BookReaderController {
         pane.add(list);
         JScrollPane scrollpane = new JScrollPane(list);
         pane.add(scrollpane);
-
+        
         JButton button1 = new JButton("Alphabetic");
         //button1.addActionListener();
         JButton button2 = new JButton("Frequency");
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(button1);
         buttonPanel.add(button2);
-
+        
         pane.add(buttonPanel, BorderLayout.SOUTH);
-
+        
+        button1.addActionListener(e -> {
+        	
+        	sortedList.sort((a,b) -> a.getKey().compareTo(b.getKey()));
+        	System.out.println("Haha");
+        
+        });
+        button2.addActionListener(e -> {
+        	
+        	sortedList.sort((a,b) -> b.getValue() - a.getValue());
+        	
+        	System.out.println("Haha");
+        
+        });
+        
+        JTextField search = new JTextField(7);
+        
+        JPanel searchPanel = new JPanel(); 
+        
+        searchPanel.add(search);
+        
+        pane.add(searchPanel,BorderLayout.NORTH);
+        
+        search.addActionListener(e -> {
+        	String input = search.getText();
+        	//Någon metod för sökning
+        });
+        
         frame.pack();
         frame.setVisible(true);
     }
+
 }
