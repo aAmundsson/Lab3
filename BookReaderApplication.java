@@ -44,13 +44,15 @@ public class BookReaderApplication {
         s.close();
         long t1 = System.nanoTime();
 
-        for(TextProcessor p : processorList){
+        /*for(TextProcessor p : processorList){
+
             p.report();
-        }
+        }*/
 
         System.out.println("tid: " + (t1-t0)/1000000 + " ms.");
 
         BookReaderController controller = new BookReaderController(GWC);
+
 
     }
 }
